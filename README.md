@@ -2,9 +2,9 @@
 
 This project builds AI-ready Magic: The Gathering collection datasets from:
 
-- `input/all_cards_16_05.csv`: a ManaBox CSV export of the owned collection.
+- `input/<your-collection>.csv`: a ManaBox CSV export of the owned collection.
 - `input/scryfall_default_cards.json`: Scryfall bulk data, using the Default Cards file from the [Scryfall Bulk Data API](https://scryfall.com/docs/api/bulk-data).
-- `input/millicent_edhrec.csv`: optional EDHREC recommendation export for a commander.
+- `input/<your-edhrec-csv>.csv`: optional EDHREC recommendation export for a commander.
 
 The Scryfall input may be either a JSON array or JSONL file, including `.gz` variants. In this repository the local file is named `input/scryfall_default_cards.json`, so examples should use that exact path.
 
@@ -14,21 +14,17 @@ EDHREC CSV input is used only as a candidate and recommendation signal. Scryfall
 
 ```powershell
 uv run python .\build_mtg_ai_dataset.py `
-  --manabox-csv .\input\all_cards_16_05.csv `
+  --manabox-csv .\input\<your-collection>.csv `
   --scryfall-json .\input\scryfall_default_cards.json `
-  --edhrec-csv .\input\millicent_edhrec.csv `
-  --commander-colors WU `
+  --edhrec-csv .\input\<your-edhrec-csv>.csv `
+  --commander-colors <your-colors> `
   --out-dir .\output
 ```
 
 For a Bant/Galea pool, generate a different commander-color pool:
 
-```powershell
-uv run python .\build_mtg_ai_dataset.py `
-  --manabox-csv .\input\all_cards_16_05.csv `
-  --scryfall-json .\input\scryfall_default_cards.json `
-  --commander-colors WUG `
-  --out-dir .\output
+```
+--commander-colors WUG 
 ```
 
 That creates `pool_WUG_commander_ai.jsonl`.
