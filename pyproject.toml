@@ -1,0 +1,13 @@
+[project]
+name = "ai-mtg-dataset-creator"
+version = "0.1.0"
+description = "AI input from mtg card collection and ehdrec data"
+readme = "README.md"
+authors = [
+    { name = "Pepijn Schouten", email = "pepijn.sch@gmail.com" },
+]
+requires-python = ">=3.14"
+dependencies = [
+    "requests>=2.34.2",
+    "typer>=0.25.1",
+]
